@@ -227,5 +227,5 @@ This project demonstrates API testing using Postman, providing a collection of t
 
 
 ## Newman Report Summary:
-![Newman Report Summary](https://github.com/Sadiabristy-picchi/Automated-Testing-of-Rest-Booking-API-with-Newman-Report/assets/152195690/56d08c4a-dfa9-4aa3-8d52-23ccbdf25a10)
+![Newman Report Summary](https://github.com/Sadiabristy-picchi/Automated-Testing-of-Rest-Booking-API-with-Newman-Report/blob/main/Report/Report.png)
 
