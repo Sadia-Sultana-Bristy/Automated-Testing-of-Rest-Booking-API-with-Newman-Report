@@ -1,5 +1,19 @@
 ### **Rest Booking API Testing with Postman Newman**
 This project demonstrates API testing using Postman, providing a collection of tests to validate various endpoints of the API. 
+###**Description**
+I have completed API testing on a booking website. The following website is the website I have tested. https://restful-booker.herokuapp.com/
+
+Tasks Done
+
+-CRUD operations such as Create, Get, Put & Patch, and Delete.
+
+-Writing pre-request scripts using dynamic parameters
+
+-API Request & Response Chaining
+
+-Writing test scripts for data validation.
+
+-Newman HTML & HTML Extra Report
 
 ### **Features**
 
@@ -16,9 +30,9 @@ This project demonstrates API testing using Postman, providing a collection of t
 - Newman
 
 ### **Prerequisite:**
-- Node Js
-- Newman
-- Newman Html Report Library
+Postman: Install Postman to create and export your collection and environment files.
+Newman: Install Newman to run Postman collections from the command line.
+Node.js: Ensure you have Node.js installed, as Newman requires it.
 
 ### **Installation**
 
@@ -54,7 +68,51 @@ This project demonstrates API testing using Postman, providing a collection of t
 8. View Results:
     -   Once the tests are complete, view the results in the Runner tab.
     -   Detailed test results can be viewed for each request.
+### **Instructions** 
+Follow these steps to run your API tests and generate HTML reports using Newman and the provided collection and environment files:
 
+Clone the Repository:
+
+Clone this Git repository to your local machine using the following command:
+git clone https://github.com/Sadiabristy-picchi/Automated-Testing-of-Rest-Booking-API-with-Newman-Report.git
+Navigate to the Repository Directory:
+
+Change your working directory to the repository's root folder:
+cd API-Automated-Testing-of-Rest-Booking-API-with-Newman-Report
+Install Newman Globally (if not already installed):
+
+Install Newman globally using npm (Node Package Manager):
+npm install -g newman
+Run Newman with Console Report:
+Execute your API tests using Newman by running the following command:
+newman run Booker_API.json -e Environment.json
+Replace "Booker_API.json" with the actual filename of your collection file.
+Replace "Environment.json" with the actual filename of your environment file.
+Generate HTML Report:
+To generate the standard HTML report in addition to the console report, use the following command:
+newman run Booker_API.json -e Environment.json --reporters cli,html
+Generate an Extra HTML Report (Optional):
+
+If you want to generate an additional HTML report with more details, use the following command:
+newman run Booker_API.json -e Environment.json -r cli,htmlextra
+This command will generate a detailed HTML report named "newman-report-htmlextra.html."
+Troubleshooting Report Generation:
+
+If you encounter issues during report generation, you can try uninstalling and reinstalling the newman and newman-reporter-htmlextra packages:
+npm uninstall -g newman newman-reporter-htmlextra
+npm install -g newman newman-reporter-htmlextra
+After reinstallation, run the report generation command again:
+newman run Booker_API.json -e Environment.json -r cli,htmlextra
+View Reports:
+
+The console report will be displayed in your terminal.
+The HTML reports (standard and extra, if generated) will be available in the newman directory located in the root of your project.
+Customize HTML Reports (Optional):
+
+You can further customize the appearance of the HTML reports by providing custom templates.
+Example Command (with an Extra HTML Report)
+
+newman run Booker_API.json -e Environment.json -r cli,htmlextra
 ## **Testing**
 
 ## Test Case Scenarios:
