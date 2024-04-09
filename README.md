@@ -39,7 +39,7 @@ Node.js: Ensure you have Node.js installed, as Newman requires it.
 1. Postman: If you haven't already, [download and install Postman.](https://www.postman.com/downloads/)
 2. Clone the repository:
  ```console 
-  git clone https://github.com/ebrahimhossaincse/Automated-Testing-of-Rest-Booking-API-with-Newman-Report.git
+  git clone https://github.com/Sadiabristy-picchi/Automated-Testing-of-Rest-Booking-API-with-Newman-Report.git
 ```
 3. Import the Postman collection:
     - Open Postman.
@@ -68,51 +68,6 @@ Node.js: Ensure you have Node.js installed, as Newman requires it.
 8. View Results:
     -   Once the tests are complete, view the results in the Runner tab.
     -   Detailed test results can be viewed for each request.
-### **Instructions** 
-Follow these steps to run your API tests and generate HTML reports using Newman and the provided collection and environment files:
-
-Clone the Repository:
-
-Clone this Git repository to your local machine using the following command:
-git clone https://github.com/Sadiabristy-picchi/Automated-Testing-of-Rest-Booking-API-with-Newman-Report.git
-Navigate to the Repository Directory:
-
-Change your working directory to the repository's root folder:
-cd API-Automated-Testing-of-Rest-Booking-API-with-Newman-Report
-Install Newman Globally (if not already installed):
-
-Install Newman globally using npm (Node Package Manager):
-npm install -g newman
-Run Newman with Console Report:
-Execute your API tests using Newman by running the following command:
-newman run Booker_API.json -e Environment.json
-Replace "Booker_API.json" with the actual filename of your collection file.
-Replace "Environment.json" with the actual filename of your environment file.
-Generate HTML Report:
-To generate the standard HTML report in addition to the console report, use the following command:
-newman run Booker_API.json -e Environment.json --reporters cli,html
-Generate an Extra HTML Report (Optional):
-
-If you want to generate an additional HTML report with more details, use the following command:
-newman run Booker_API.json -e Environment.json -r cli,htmlextra
-This command will generate a detailed HTML report named "newman-report-htmlextra.html."
-Troubleshooting Report Generation:
-
-If you encounter issues during report generation, you can try uninstalling and reinstalling the newman and newman-reporter-htmlextra packages:
-npm uninstall -g newman newman-reporter-htmlextra
-npm install -g newman newman-reporter-htmlextra
-After reinstallation, run the report generation command again:
-newman run Booker_API.json -e Environment.json -r cli,htmlextra
-View Reports:
-
-The console report will be displayed in your terminal.
-The HTML reports (standard and extra, if generated) will be available in the newman directory located in the root of your project.
-Customize HTML Reports (Optional):
-
-You can further customize the appearance of the HTML reports by providing custom templates.
-Example Command (with an Extra HTML Report)
-
-newman run Booker_API.json -e Environment.json -r cli,htmlextra
 ## **Testing**
 
 ## Test Case Scenarios:
