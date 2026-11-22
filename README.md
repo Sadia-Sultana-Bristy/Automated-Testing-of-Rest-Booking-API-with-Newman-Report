@@ -1,4 +1,8 @@
 ### **Rest Booking API Testing with Postman Newman**
+
+[![Newman API Tests](https://github.com/Sadia-Sultana-Bristy/Automated-Testing-of-Rest-Booking-API-with-Newman-Report/actions/workflows/newman.yml/badge.svg)](https://github.com/Sadia-Sultana-Bristy/Automated-Testing-of-Rest-Booking-API-with-Newman-Report/actions/workflows/newman.yml)
+
+📊 **[Live test report](https://sadia-sultana-bristy.github.io/Automated-Testing-of-Rest-Booking-API-with-Newman-Report/)**: the latest Newman HTML Extra report, published to GitHub Pages by CI on every push to `main` and every weekday run.
 This project demonstrates API testing using Postman, providing a collection of tests to validate various endpoints of the API. 
 
 ### **Description**
