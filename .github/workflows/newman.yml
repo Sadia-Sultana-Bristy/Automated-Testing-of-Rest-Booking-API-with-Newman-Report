@@ -1,0 +1,77 @@
+name: Newman API Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekday regression run at 03:00 UTC
+    - cron: '0 3 * * 1-5'
+  workflow_dispatch:
+
+concurrency:
+  group: newman-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api-tests:
+    name: Run Postman collection with Newman
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Newman and HTML Extra reporter
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run API tests
+        run: |
+          mkdir -p newman-report
+          newman run Collection/postman_collection.json \
+            -e Environment/postman_environment.json \
+            --reporters cli,htmlextra,junit \
+            --reporter-htmlextra-export newman-report/index.html \
+            --reporter-htmlextra-title "Restful Booker API - Newman Report" \
+            --reporter-junit-export newman-report/junit.xml
+
+      - name: Upload Newman report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: newman-report/
+          retention-days: 14
+
+  publish-report:
+    name: Publish HTML report to GitHub Pages
+    needs: api-tests
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download Newman report
+        uses: actions/download-artifact@v4
+        with:
+          name: newman-report
+          path: report
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: report
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
